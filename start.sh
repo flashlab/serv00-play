@@ -1206,8 +1206,8 @@ startAgent() {
   fi
   cd $workedir
 
-  local configfile="./config.yml"
-  if [ ! -e "$configfile" ]; then
+  local config="./config.yml"
+  if [ ! -e "$config" ]; then
     red "未安装探针，请先安装！！!"
     return
   fi
@@ -1216,7 +1216,7 @@ startAgent() {
     stopNeZhaAgent
   fi
 
-  nohup ./nezha-agent -c config.yml >/dev/null 2>&1 &
+  nohup ./nezha-agent -c $config >/dev/null 2>&1 &
 
   if checknezhaAgentAlive; then
     green "启动成功!"
@@ -1310,7 +1310,7 @@ EOF
     stopNeZhaAgent
   fi
 
-  nohup ./nezha-agent -c config.yml >/dev/null 2>&1 &
+  nohup ./nezha-agent -c $config >/dev/null 2>&1 &
   green "哪吒探针成功启动!"
 }
 
