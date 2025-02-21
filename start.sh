@@ -2973,11 +2973,11 @@ keepAliveServ() {
   showMenu
 }
 
-user="$(whoami)"
-domain="$user.serv00.net"
-domain="${domain,,}"
-domainPath="${installpath}/domains/$domain/public_nodejs"
 installkeepAlive() {
+  local user="$(whoami)"
+  local domain="$user.serv00.net"
+  domain="${domain,,}"
+  local domainPath="${installpath}/domains/$domain/public_nodejs"
   local workdir="${installpath}/serv00-play/keepalive"
   if [[ -e "$domainPath/config.json" ]]; then
     red "已安装,请勿重复安装!"
@@ -3030,6 +3030,10 @@ installkeepAlive() {
 }
 
 uninstallkeepAlive() {
+  local user="$(whoami)"
+  local domain="$user.serv00.net"
+  domain="${domain,,}"
+  local domainPath="${installpath}/domains/$domain/public_nodejs"
   read -p "是否卸载? [y/n] [n]:" input
   input=${input:-n}
   if [[ "$input" != "y" ]]; then
@@ -3043,6 +3047,9 @@ uninstallkeepAlive() {
 }
 
 createDefaultDomain() {
+  local user="$(whoami)"
+  local domain="$user.serv00.net"
+  domain="${domain,,}"
   rt=$(devil www add $domain nodejs /usr/local/bin/node22 production)
   if [[ ! "$rt" =~ .*succesfully*$ ]]; then
     red "创建默认域名失败"
@@ -3051,6 +3058,9 @@ createDefaultDomain() {
 }
 
 delDefaultDomain() {
+  local user="$(whoami)"
+  local domain="$user.serv00.net"
+  domain="${domain,,}"
   rt=$(devil www del $domain --remove)
   if [[ ! "$rt" =~ .*deleted*$ ]]; then
     red "删除默认域名失败"
@@ -3059,6 +3069,9 @@ delDefaultDomain() {
 }
 
 updatekeepAlive() {
+  local user="$(whoami)"
+  local domain="$user.serv00.net"
+  domain="${domain,,}"
   domainPath="${installpath}/domains/$domain/public_nodejs"
   workDir="$installpath/serv00-play/keepalive"
   if [[ ! -e "$domainPath/config.json" ]]; then
@@ -3078,6 +3091,9 @@ updatekeepAlive() {
 }
 
 changeKeepAliveToken() {
+  local user="$(whoami)"
+  local domain="$user.serv00.net"
+  domain="${domain,,}"
   domainPath="${installpath}/domains/$domain/public_nodejs"
   if [[ ! -e "$domainPath/config.json" ]]; then
     red "未安装,请先安装!"
@@ -3101,6 +3117,9 @@ changeKeepAliveToken() {
 }
 
 setKeepAliveInterval() {
+  local user="$(whoami)"
+  local domain="$user.serv00.net"
+  domain="${domain,,}"
   domainPath="${installpath}/domains/$domain/public_nodejs"
   if [[ ! -e "$domainPath/config.json" ]]; then
     red "未安装,请先安装!"
