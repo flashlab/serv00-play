@@ -1,10 +1,10 @@
 name: 批量保活进程
 
 on:
-  schedule:
+  # schedule:
     # 使用cron表达式定义任务运行的时间
     # github使用utc时间
-    - cron: '15 20 * * *' #北京时间18点15
+    # - cron: '15 20 * * *' #北京时间18点15
   workflow_dispatch:
 
 jobs:
